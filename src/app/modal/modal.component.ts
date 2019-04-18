@@ -1,22 +1,25 @@
 import {Component} from '@angular/core';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Observable, of } from 'rxjs';
+import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'ngbd-modal-basic',
-  templateUrl: './modal-basic.html'
+  selector: 'app-modal-component',
+  templateUrl: './modal.component.html'
 })
-export class NgbdModalBasic {
+export class ModalComponent {
   closeResult: string;
 
   constructor(private modalService: NgbModal) {}
 
-  open(content) {
+  open(content): Observable<string> {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+    return of(this.closeResult);
   }
 
   private getDismissReason(reason: any): string {

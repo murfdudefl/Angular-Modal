@@ -8,7 +8,7 @@ export class ModalService {
 
   constructor() { }
 
-  displayModal(title: string, body: string): Observable<boolean> {
-    
-  }
+  // displayModal(title: string, body: string): Observable<boolean> {
+
+  // }
 }
